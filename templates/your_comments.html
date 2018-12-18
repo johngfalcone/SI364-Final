@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Welcome to the Your Comments page!</h1>
+<p>Here, you can view all of the comments you've created as this user</p>
+<br></br>
+<br></br>
+
+{% for comment in comments %}
+<ul style="list-style-type:none">
+<li>
+    <h2><i>{{ comment.tweet_ref.user_ref.username }}</i></h2>
+    <p>{{ comment.tweet_ref.text }}</p>
+    <p>Post ID: {{comment.tweet_ref.id}}</p>
+    <br>
+    <p>Your Comment:</p>
+    <p>{{comment.text}}</p>
+    </br>
+</li>
+</ul>
+<br>
+{% endfor %}
+
+{% if not comments %}
+<p>There are no comments to show. Try making one!</p>
+{% endif %}
+
+{% endblock %}

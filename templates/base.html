@@ -1,0 +1,19 @@
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+
+<br></br>
+{% block nav %}
+    <a href="{{ url_for('index') }}">Home</a><br>
+    <a href="{{ url_for('explore') }}">Explore Users</a><br>
+    <a href="{{ url_for('your_posts') }}">Your Posts</a><br>
+    <a href="{{ url_for('your_likes') }}">Your Likes</a><br>
+    <a href="{{ url_for('your_comments') }}">Your Comments</a><br>
+    <a href="{{ url_for('your_weather') }}">Your Weather</a><br>
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}

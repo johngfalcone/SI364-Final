@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Welcome to the Explore Users page!</h1>
+<p>Here, you can view all of the users currently created on this app and registered in the DB. If you'd like to follow any of these users and see their posts on the homepage, follow them using the form below.</p>
+<br></br>
+<br></br>
+
+<form method="POST">
+    {{ form1.hidden_tag() }}
+    {{ form1.new_follow.label }} 
+    {{ form1.new_follow() }} {{ form1.submit() }}
+</form>
+
+<br></br>
+{% for user in users %}
+<ul style="list-style-type:none">
+<li>
+    <h2><i>{{ user.username }}</i></h2>
+    <p>{{ user.location }}</p>
+    </br>
+</li>
+</ul>
+<br>
+{% endfor %}
+
+{% endblock %}

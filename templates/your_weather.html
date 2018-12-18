@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Welcome to the Your Weather page!</h1>
+<p>Here, you can view the weather in the city you entered when you created this user. If you'd like to change this location, you can do so using the field below.</p>
+
+<form method="POST">
+    {{ form4.hidden_tag() }}
+    {{ form4.new_location.label }}
+    {{ form4.new_location }} {{ form4.submit() }}
+</form>
+<br>
+<br>
+<h3><i>Your current location: {{ location_query.location }}</i></h3>
+<p>{{current_weather}}</p>
+
+{% endblock %}

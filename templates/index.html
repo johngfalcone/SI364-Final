@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br></br>
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+<h1>Welcome to Poster!</h1>
+<p>Here, you'll see a feed of all of the posts from users that you've gone ahead and followed. From here, you're able to like and comment on each of the posts using the Post ID listed underneath the post text. Should you want to view all of your likes and comments, they're going to be visible in the "Your Likes" and "Your Comments" pages respectively. NOTE: Only like and comment on posts that actually exist! Don't use nonexistent post ids... or the system will get very sad :(</p>
+
+<br></br>
+
+<form method="POST">
+    {{ form3.hidden_tag() }}
+    {{ form3.tweet_id.label }} 
+    {{ form3.tweet_id() }} {{ form3.submit() }}
+</form>
+
+<form method="POST">
+    {{ form6.hidden_tag() }}
+    {{ form6.comment_tweet_id.label }} {{ form6.comment_tweet_id() }} 
+    {{ form6.comment_text.label }} {{   form6.comment_text()   }} {{ form6.submit() }}
+</form>
+
+<br>
+<br>
+<form method="POST">
+    {{ form2.hidden_tag() }}
+    {{ form2.tweet.label }} 
+    {{ form2.tweet() }} {{ form2.submit() }}
+</form>
+
+<br></br>
+{% for tweet in tweets %}
+<ul style="list-style-type:none">
+<li>
+    <h2><i>{{ tweet[1].username_2.username }}</i></h2>
+    <p>{{ tweet[0].text }}</p>
+    <p>Post ID: {{tweet[0].id}}</p>
+    </br>
+</li>
+</ul>
+<br>
+{% endfor %}
+
+<br></br>
+{% if not tweets %}
+<p>There are no posts to show. Try making one!</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Welcome to the Your Posts page!</h1>
+<p>Here, you can view all of the posts you've created as this user. If you'd like to add to this list of posts, go back to the homepage and create some.</p>
+<br></br>
+<br></br>
+
+
+<br></br>
+{% for tweet in tweets %}
+<ul style="list-style-type:none">
+<li>
+    <h2><i>{{ current_user.username }}</i></h2>
+    <p>{{ tweet.text }}</p>
+    <p>Post ID: {{tweet.id}}</p>
+    </br>
+</li>
+</ul>
+<br>
+{% endfor %}
+
+{% endblock %}
